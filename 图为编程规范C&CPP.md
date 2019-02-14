@@ -19,7 +19,7 @@
 
 
 
-# 排版
+# 风格
 
 **【建议】**  在代码编辑器中，将字体设置为等宽字体。  
 在代码编辑器中，建议设置为等宽字体，例如Consolas、Courier New等，便于代码对齐。  
@@ -32,6 +32,60 @@
 查看VS中代码，显示空格和tab后  
 ![VS代码的对齐](.\picture\Snipaste_2019-01-11_16-40-48.png)  
 可以看出在编写代码时tab和空格混用，在VS中一个tab宽度为4个空格，而在记事本中一个tab宽度为8个空格，所以导致记事本中显示的代码格式混乱。
+
+# 注释 #
+
+## 文件注释 ##
+
+```c
+/**
+* @file       filename
+* @brief      This is a brief description.
+* @details    This is the detail description.
+* @author     Felix Lu/000011
+* @date       2019-02-14
+* @version    V00A00D00
+* @par        Copyright © 2018 西安图为电气技术有限公司 All rights reserved.
+* @par History:
+* version: author, date, desc
+*/
+```
+
+## 函数注释 ##
+
+```C
+/** 下面是一个含有两个参数的函数的注释说明（简述）
+ * @brief   该函数的简要说明
+ * @details 该函数的详述信息
+ * @param a 被测试的变量（param描述参数）
+ * @param b 被测试的另一变量的描述
+ * @return  测试结果（return描述返回值）
+ * @see     Test()（本函数参考其它的相关的函数，这里作一个链接） 
+ * @note    (note描述需要注意的问题)
+ */
+int DoAnyting(int a, float b);
+```
+
+
+
+## Doxygen指令说明 ##
+
+| 指令       | 说明                                                         |
+| ---------- | ------------------------------------------------------------ |
+| @file      | 档案的批注说明。                                             |
+| @author    | 作者的信息                                                   |
+| @brief     | 用于class 或function的简易说明。eg：@brief 本函数负责打印错误信息串 |
+| @param     | 主要用于函数说明中，后面接参数的名字，然后再接关于该参数的说明。eg：@param arg_name 参数说明 |
+| @return    | 描述该函数的返回值情况。eg：@return 本函数返回执行结果，若成功则返回TRUE，否则返回FLASE |
+| @retval    | 主要用于函数说明中，描述返回值类型和意义，所以后面要先接一个返回值，然后再放该返回值的说明。eg：@retval NULL 空字符串。 @retval !NULL 非空字符串。 |
+| @note      | 注解                                                         |
+| @attention | 注意                                                         |
+| @warning   | 警告信息                                                     |
+| @enum      | 引用了某个枚举，Doxygen会在该枚举处产生一个链接。eg：@enum CTest::MyEnum |
+| @var       | 引用了某个变量，Doxygen会在该变量处产生一个链接。eg：@var CTest::m_FileKey |
+| @class     | 引用某个类，格式：@class <name> [<header-file>] [<header-name>]。eg：@class CTest "inc/class.h" |
+| @exception | 可能产生的异常描述。eg：@exception 本函数执行可能会产生超出范围的异常 |
+|            |                                                              |
 
 
 
@@ -60,4 +114,4 @@
 
 # 命名
 
-# 注释
+# 
