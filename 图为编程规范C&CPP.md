@@ -21,6 +21,8 @@
 
 # 风格
 
+## 排版
+
 **【建议】**  在代码编辑器中，将字体设置为等宽字体。  
 在代码编辑器中，建议设置为等宽字体，例如Consolas、Courier New等，便于代码对齐。  
 **【建议】** 代码中排版使用空格，不使用tab键。  
@@ -33,7 +35,69 @@
 ![VS代码的对齐](.\picture\Snipaste_2019-01-11_16-40-48.png)  
 可以看出在编写代码时tab和空格混用，在VS中一个tab宽度为4个空格，而在记事本中一个tab宽度为8个空格，所以导致记事本中显示的代码格式混乱。
 
+## 文件命名
+
+
+
+## 数据类型命名
+
+
+
+## 常量命名
+
+
+
+## 变量命名
+
+
+
+## 函数命名
+
+
+
+
+
+
+
 # 注释 #
+
+## Doxygen注释种类
+
+Doxygen注释的种类有多种
+
+1.
+
+```c++
+/**
+ * ....描述...
+*/
+```
+
+2.
+
+```c++
+/*!
+ * ....描述...
+*/
+或者
+/*!
+  ....描述...
+*/
+```
+
+3.
+
+```c++
+///
+///....描述...
+///
+或者
+//!
+//!....描述...
+//!
+```
+
+
 
 ## 文件注释 ##
 
@@ -45,16 +109,17 @@
 * @author     Felix Lu/000011
 * @date       2019-02-14
 * @version    V00A00D00
-* @par        Copyright © 2018 西安图为电气技术有限公司 All rights reserved.
+* @par Copyright (c):
+*             2016-2019 西安图为电气技术有限公司 All rights reserved.
 * @par History:
-* version: author, date, desc
+*             version: author, date, desc
 */
 ```
 
 ## 函数注释 ##
 
 ```C
-/** 下面是一个含有两个参数的函数的注释说明（简述）
+/**
  * @brief   该函数的简要说明
  * @details 该函数的详述信息
  * @param a 被测试的变量（param描述参数）
@@ -63,10 +128,54 @@
  * @see     Test()（本函数参考其它的相关的函数，这里作一个链接） 
  * @note    (note描述需要注意的问题)
  */
-int DoAnyting(int a, float b);
+int DoNothing(int a, float b);
 ```
 
+## 宏定义注释
 
+```c++
+/** Description of the macro */
+#define XXXX_XXX_XX      ox7fffffff
+```
+
+或者
+
+```c++
+#define XXXX_XXX_XX      0  ///< Description of the macro.
+```
+
+## 结构体注释
+
+```c++
+/**
+ * The brief description.
+ * The detail description.
+ */
+typedef struct
+{
+    int var1;     ///< Description of the member variable
+}XXXX;
+```
+
+或者
+
+```c++
+typedef struct box {
+    double length; ///< The length of the box
+    double width;  ///< The width of the box
+    double height; ///< The height of the box
+};
+```
+
+enum的各个值也如上注释。
+
+## 全局和静态变量注释
+
+```c++
+/**  Description of global variable  */
+int g_xxx = 0;
+static int s_xxx = 0; ///<  Description of static variable
+```
 
 ## Doxygen指令说明 ##
 
