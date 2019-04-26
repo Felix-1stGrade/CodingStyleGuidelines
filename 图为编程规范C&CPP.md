@@ -109,8 +109,7 @@ Doxygen注释的种类有多种
 * @author     Felix Lu/000011
 * @date       2019-02-14
 * @version    V00A00D00
-* @par Copyright (c):
-*             2016-2019 西安图为电气技术有限公司 All rights reserved.
+* @par Copyright (c) 西安图为电气技术有限公司. All rights reserved.
 * @par History:
 *             version: author, date, desc
 */
