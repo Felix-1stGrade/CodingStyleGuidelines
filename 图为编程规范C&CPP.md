@@ -150,7 +150,7 @@ if (CommAbnormalCnt >= 5)
 ```C
 struct RecFaultBits
 {
-    UINT16 Fault				:1;  // BIT00 PFC故障汇总标志
+    UINT16 Fault                :1;  // BIT00 PFC故障汇总标志
     UINT16 HwSoftStartAbnormal  :1;  // BIT01 硬件软起异常
     UINT16 SwSoftStartAbnormal  :1;  // BIT02 软件软起异常
     UINT16 DcVoltLow            :1;  // BIT03 直流母线低压
