@@ -153,8 +153,8 @@ struct RecFaultBits
     UINT16 Fault				:1;  // BIT00 PFC故障汇总标志
     UINT16 HwSoftStartAbnormal  :1;  // BIT01 硬件软起异常
     UINT16 SwSoftStartAbnormal  :1;  // BIT02 软件软起异常
-    UINT16 DcVoltLow			:1;  // BIT03 直流母线低压
-    UINT16 Rsvd				    :12; // BIT04-15 保留
+    UINT16 DcVoltLow            :1;  // BIT03 直流母线低压
+    UINT16 Rsvd                 :12; // BIT04-15 保留
 };
 ```
 
@@ -178,7 +178,7 @@ struct RecFaultBits
 */
 ```
 
-**【建议】函数声明处注释描述函数的功能，在详细描述中着重说明函数解决的问题和用法，输入输出参数的说明，以及需要注意的问题。**
+**【建议】函数声明处注释描述函数的功能、用法、输入输出参数返回值，以及对参数的限制和注意事项；函数定义处着重说明函数解决的问题和实现思路。**
 
 示例如下
 
