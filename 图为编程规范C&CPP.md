@@ -43,17 +43,148 @@
 在记事本中打开，代码就乱了 ![notepad代码的对齐](.\picture\Snipaste_2019-01-11_16-37-48.png)  查看VS中代码，显示空格和tab后
 ![VS代码的对齐](.\picture\Snipaste_2019-01-11_16-40-48.png)  可以看出在编写代码时tab和空格混用，在VS中一个tab宽度为4个空格，而在记事本中一个tab宽度为8个空格，所以导致记事本中显示的代码格式混乱。
 
+**【规则】程序的分界符`{`和`}`应独占一行并且位于同一列，同时与引用它们的语句左对齐。**
+
+```C++
+void DoNothing(void)
+{
+    {
+        {
+            ;
+            ;
+        }
+    }
+    
+    ;
+    ;
+    {
+        ;
+    }
+}
+
+```
+
+**【规则】一行代码只做一件事。**
+
+```C++
+// 推荐
+int minValue;
+int maxValue;
+
+if (value > maxValue)
+{
+    maxValue = value;
+}
+
+// 不推荐
+int minValue, maxValue;
+
+if (value > maxValue) maxValue = value;
+```
+
+**【建议】代码行不宜过长，可在低优先级操作符处拆分为多行，低优先级操作符放在新行行首，并且适当缩进。**
+
+```C++
+    vdcBusFlt = 0.99373651262477824541718973705429f * vdcBusFlt
+              + 0.0062634873752217745321302366789951f * vdcBusBak;
+
+    if((rectifier.state.runState == REC_NORMALRUN)
+    && (charger.state.selfTestFinish == 0))
+    {
+        ；
+    }
+```
+
+## 空行
+
+恰当的空行可以使程序结构清晰，段落感强，有助于提高代码的阅读效率，反之，如果没有空行，程序密密麻麻，不容易理解程序功能，也使人眼花，过多的空行，来回翻页也累人。
+
+**【规则】函数、数据类型、类等声明/定义结束后应有一行空行。 **
+
+普通函数
+
+```c++
+float CalcRectangleArea(float length, float width)
+{
+    float area;
+    
+    area = length * width;
+    return area;
+}
+
+```
+
+类成员函数/类方法
+
+```C++
+float Box::CalcRectangleArea(void)
+{
+    return length * width;
+}
+
+```
+
+类声明
+
+```C++
+class Box
+{
+public:
+    float GetLength(void);
+    void  SetLength(float length);
+    float GetWidth(void);
+    void  SetWidth(float width);
+    float GetHeight(void);
+    void  SetHeight(float height);
+    
+private:
+    float m_length;
+    float m_width;
+    float m_height;
+};
+
+```
+
+**【规则】不同的程序功能块，或者不同的逻辑段落之间必须有一行空行。**
+
+**【建议】空行不宜过多，需要空行的地方空一行就可以。**
+
 ## 变量
 
-**【规则】变量声明在每一行只声明一个变量。**
+**【规则】每一行只声明一个变量。**
 
 一行声明多个变量不但不方便注释每一个变量的含义，而且可能混淆变量的类型。
 
 比如同一行包含指针和非指针的声明，易导致代码阅读者理解错误或代码犯错。
 
 ```C++
-int * counter, quantity; // 两个变量都是int指针类型吗？
+int * counter, quantity; // quantity是int类型指针吗？
 ```
+
+**【规则】数据类型和变量之间加一个空格，也可根据实际代码对齐的需求，增加空格数量，但是不要太多。**
+
+```C++
+// 根据实际情况对齐代码
+int    value1;
+float  value2;
+int    value3;
+double value4;
+char   value5;
+```
+
+```C++
+// 如果对齐需要添加的空格太多，所以此处不强制对齐
+int value1;
+struct Rectifier value2;
+```
+
+
+
+## 关键字
+
+**【规则】关键字后应有一个空格。**
+
+const、virtual、inline、case 等关键字之后要留一个空格，否则无法辨析关键字。if、for、while 等关键字之后建议留一个空格再跟左括号‘（’，以突出关键字。
 
 ## 运算符
 
@@ -79,7 +210,7 @@ int * counter, quantity; // 两个变量都是int指针类型吗？
     pBox = &box;  // pBox是指向box的指针
 ```
 
-**【规则】成员运算符.和 ->前后不加空格。**
+**【规则】成员运算符`.`和` ->`前后不加空格。**
 
 ```c++
     box.length = 1.23;
@@ -91,29 +222,39 @@ int * counter, quantity; // 两个变量都是int指针类型吗？
 
 作用于两个运算对象的运算符是二元运算符，如相等运算符==和乘法运算符*。
 
-
-
-
-
 ```C++
     rectangleArea = length * width;
 ```
 
-**【规则】\(\)与操作数之间不加空格。**
+**【规则】左括号`(`和右括号`)`与操作数之间不加空格。**
 
 ```c++
     average = (a + b + c) / 3;
 ```
 
+**【规则】`[`之后和`]`之前不加空格。**
 
+**【规则】`,`和`;`前面不加空格。**
 
+**【建议】对于较长的表达式或语句，为了紧凑起见可以适当地去掉一些空格。**
 
+```C++
+    for (i=0; i<10; i++)
+    {
+        ;
+    }
 
+    if ((volt>LOW_VOLT) && (volt<HIGH_VOLT))
+    {
+        ;
+    }
 
+    root = (-b + sqrt(b*b-4*a*c)) / (2*a)；
+```
 
 ## 结构体和类
 
-**【建议】类的声明按照一定的顺序进行，关键字不缩进。**
+**【建议】类的声明按照一定的顺序进行，`public`、`private`、`protected`等关键字不缩进。**
 
 对外使用的接口或变量放前面，只在类内部使用的成员变量或成员函数放后面。
 
@@ -149,6 +290,8 @@ struct Box
 
 ## if-else
 
+**【规则】*if*和*else*独占一行。**
+
 **【规则】*if*和*else*后面的语句，无论有多少行，必须放在{}中。**
 
 代码示例如下
@@ -169,7 +312,7 @@ struct Box
     }
 ```
 
-**【规则】使用if-else语句，必须考虑条件是否完整覆盖。**
+
 
 ## switch-case
 
@@ -196,6 +339,12 @@ struct Box
 
 循环语句包括for、while和do-while。
 
+**【规则】*for*，*while*，*do*语句独占一行。**
+
+**【规则】*for*，*while*，*do*后面的语句，无论有多少行，必须放在{}中。**
+
+代码示例如下：
+
 ```C++
     for(int i; i < MAX_CNT; i++)
     {
@@ -220,6 +369,8 @@ struct Box
 
 ## 函数
 
+**【规则】函数名之后不留空格，紧跟左括号`(`。**
+
 **【规则】函数定义结束后应有一行空行。 **
 
 普通函数
@@ -231,7 +382,7 @@ float CalcRectangleArea(float length, float width)
     
     area = length * width;
     return area;
-};
+}
 
 ```
 
@@ -241,7 +392,7 @@ float CalcRectangleArea(float length, float width)
 float Box::CalcRectangleArea(void)
 {
     return length * width;
-};
+}
 
 ```
 
@@ -423,6 +574,13 @@ int currentTime;
 int time;
 ```
 
+**【规则】用正确的反义词组命名具有互斥意义的变量。**
+
+```c++
+int minValue;
+int maxValue;
+```
+
 **【规则】禁止单字母作为变量名，除*i，j，k*作为局部循环变量外。**
 
 ```C++
@@ -452,7 +610,7 @@ void GetObjectNumber(void)
 }
 ```
 
-**【规则】全局变量加前缀g_（global）。**
+**【规则】尽量不使用全局变量，如果必须有，那么全局变量加前缀g_（global）。**
 
 **【规则】类的成员变量加前缀m_（member）。**
 
@@ -470,6 +628,22 @@ int GetCurrentTime(void)
 **【规则】函数表示行为或动作，函数名应以动词开头，动词或动词+名词。**
 
 例如函数名GetCurrentTime，获取当前时间Get（动词）+CurrentTime（名词，宾语）。
+
+**【规则】用正确的反义词组命名具有互斥意义的函数。**
+
+```C++
+float GetTemperature(void)
+{
+    return m_temperature;
+}
+
+void SetTemperature(float temperature)
+{
+    m_temperature = temperature;
+}
+```
+
+
 
 
 # 注释 #
@@ -956,9 +1130,11 @@ CHECK_AND_RETURN(pMem2 , ERR_CODE_XXX) /*此时如果pMem2==NULL_PTR，则pMem1�
 
 # 变量
 
-
+**【规则】定义变量的同时初始化变量，避免忘记初始化。**
 
 # 函数
+
+**【规则】使用if-else语句，必须考虑条件是否完整覆盖。**
 
 # 命名
 
