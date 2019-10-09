@@ -344,7 +344,7 @@ struct Box
 代码示例如下：
 
 ```C++
-    for(int i; i < MAX_CNT; i++)
+    for (int i=0; i<MAX_CNT; i++)
     {
         ;
         ;
@@ -352,7 +352,7 @@ struct Box
 ```
 
 ```C++
-    while(i < MAX_CNT)
+    while (i < MAX_CNT)
     {
         ;
     }
@@ -362,7 +362,7 @@ struct Box
     do
     {
         ;
-    }while(i < MAX_CNT)
+    } while(i < MAX_CNT)
 ```
 
 ## 函数
@@ -657,7 +657,7 @@ void SetTemperature(float temperature)
 例如，下面的注释完全是多余的，除了浪费码字的时间，占用字符位置，还影响别人读代码。
 
 ```c
-if (Timer > 10)  // 如果Timer大于10
+if (timer > 10)  // 如果timer大于10
 {
     i++;  // i加一
 }
@@ -668,7 +668,7 @@ if (Timer > 10)  // 如果Timer大于10
 例如，下面对定点DSP实现除法代码的注释。
 
 ```C
-AvgCurrent = (TotalCurrent * 1365)>>13; // 定点运算，平均电流=总电流/设备数量6台
+avgCurrent = (totalCurrent * 1365)>>13; // 定点运算，平均电流=总电流/设备数量6台
 ```
 
 **【规则】注释必须与代码同步更新。**
@@ -690,16 +690,16 @@ AvgCurrent = (TotalCurrent * 1365)>>13; // 定点运算，平均电流=总电流
 例如，注释位于代码右边。
 
 ```C
-int VoltOverLow;  // 电压过低标志
+int voltOverLow;  // 电压过低标志
 ```
 
 例如，注释位于代码上面。
 
 ```C
 // 由于通信可能受到干扰，为避免误判通信失败，在此处连续5次异常，才判定通信失败。
-if (CommAbnormalCnt >= 5)
+if (commAbnormalCnt >= 5)
 {
-    CommFail = true;
+    commFail = true;
 }
 ```
 
@@ -708,11 +708,11 @@ if (CommAbnormalCnt >= 5)
 ```C
 struct RecFaultBits
 {
-    UINT16 Fault                :1;  // BIT00 PFC故障汇总标志
-    UINT16 HwSoftStartAbnormal  :1;  // BIT01 硬件软起异常
-    UINT16 SwSoftStartAbnormal  :1;  // BIT02 软件软起异常
-    UINT16 DcVoltLow            :1;  // BIT03 直流母线低压
-    UINT16 Rsvd                 :12; // BIT04-15 保留
+    UINT16 fault                :1;  // BIT00 PFC故障汇总标志
+    UINT16 hwSoftStartAbnormal  :1;  // BIT01 硬件软起异常
+    UINT16 swSoftStartAbnormal  :1;  // BIT02 软件软起异常
+    UINT16 dcVoltLow            :1;  // BIT03 直流母线低压
+    UINT16 rsvd                 :12; // BIT04-15 保留
 };
 ```
 
@@ -762,10 +762,10 @@ struct RecFaultBits
 class CUtility
 {
 public:
-    float Uin;     // 市电电压
+    float uin;     // 市电电压
     ...
 private:
-    float FreqFlt;  // 市电频率滤波值，用于监控显示
+    float freqFlt;  // 市电频率滤波值，用于监控显示
     ...
 };
 ```
@@ -902,7 +902,8 @@ typedef struct
 或者
 
 ```c++
-typedef struct box {
+typedef struct Box
+{
     double length; ///< The length of the box
     double width;  ///< The width of the box
     double height; ///< The height of the box
@@ -988,32 +989,32 @@ static int s_xxx = 0; ///<  Description of static variable
 例如：有下面的宏定义表达式
 
 ```c++
-#define UPDNLMT(Var,Max,Min) (Var)=((Var)>=(Max))?(Max):(Var); \
-                             (Var)=((Var)<=(Min))?(Min):(Var);
+#define UPDNLMT(var,max,min) (var)=((var)>=(max))?(max):(var); \
+                             (var)=((var)<=(min))?(min):(var);
 ```
 
 当如下方式使用时
 
-```
+```c++
 for (int i=0; i<1000; i++)
-    UPDNLMT(Var,1024,-1024)
+    UPDNLMT(var,1024,-1024)
 ....
 ```
 
 会导致循环中只有宏表达式的第一句执行。加上{}后可以解决这一问题。
 
-```
-#define UPDNLMT(Var,Max,Min) {(Var)=((Var)>=(Max))?(Max):(Var); \
-                             (Var)=((Var)<=(Min))?(Min):(Var);}
+```C++
+#define UPDNLMT(var,max,min) {(var)=((var)>=(max))?(max):(var); \
+                             (var)=((var)<=(min))?(min):(var);}
 ```
 
 上面示例中，宏表达式可正常作用。但是，如果在调用宏表达式时后面加上分号，仍会出现错误
 
 ```c++
-if (Flag == 1)
-    UPDNLMT(Var,1024,-1024);
+if (flag == 1)
+    UPDNLMT(var,1024,-1024);
 else
-    UPDNLMT(Var,10,-10);
+    UPDNLMT(var,10,-10);
 ```
 
 编译器会提示编译错误。
@@ -1023,7 +1024,7 @@ else
 **【规则】使用宏表达式时，参数不允许变化。**
 
 ```c++
-#define SQUARE_AREA(R) ((R)*(R))
+#define SQUARE_AREA(r) ((r)*(r))
 ...
 a = 1;
 SQUARE_AREA(a++)
@@ -1060,26 +1061,27 @@ SQUARE_AREA(a++)
 ```C++
 #define MAX_MACRO(a, b) ((a) > (b) ? (a) : (b))
 
-int MAX_FUNC(int a, int b) 
+int MaxFunc(int a, int b) 
 {
     return ((a) > (b) ? (a) : (b));
 }
 
-int testFunc()
+int TestFunc()
 {
     unsigned int a = 1;
     int b = -1;
     printf("MACRO: max of a and b is: %d\n", MAX_MACRO(++a, b));
-    printf("FUNC : max of a and b is: %d\n", MAX_FUNC(a, b));
+    printf("FUNC : max of a and b is: %d\n", MaxFunc(a, b));
     return 0;
 }
 ```
 
 上面宏代码调用中，结果是(a < b)，所以a只加了一次，所以最终的输出结果是：
 
- MACRO: max of a and b is: -1
-
+```
+MACRO: max of a and b is: -1
 FUNC : max of a and b is: 2
+```
 
 **【建议】常量建议使用*const*定义代替宏。**
 
