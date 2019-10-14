@@ -2895,6 +2895,8 @@ void ParkTransformation(FLOAT32 wt, const ABC * const abc, DQ *dq0)
 
 # TODO
 
+数组指针补充
+
 内存管理补充
 
 作用域-命名空间
