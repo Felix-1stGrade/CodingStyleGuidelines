@@ -1255,16 +1255,16 @@ struct RecFaultBits
 
 ```C
 /**
-* @file       filename
-* @brief      This is a brief description.
-* @details    This is the detail description.
-* @author     Felix Lu/000011
-* @date       2019-02-14
-* @version    V00A00D00
-* @par Copyright (c) 2019~2100, 西安图为电气技术有限公司. All rights reserved.
-* @par History:
-*             version: author, date, desc
-*/
+ * @file       filename
+ * @brief      This is a brief description.
+ * @details    This is the detail description.
+ * @author     Felix Lu/000011
+ * @date       2019-02-14
+ * @version    V00A00D00
+ * @par Copyright (c) 2019~2100, 西安图为电气技术有限公司. All rights reserved.
+ * @par History:
+ *             version: author, date, desc
+ */
 ```
 
 **【建议】函数声明处注释描述函数的功能、用法、输入输出参数返回值，以及对参数的限制和注意事项；函数定义处着重说明函数解决的问题和实现思路。**
@@ -1348,7 +1348,7 @@ Doxygen注释的种类有多种
 ```c++
 /**
  * ....描述...
-*/
+ */
 ```
 
 2.
@@ -1356,11 +1356,11 @@ Doxygen注释的种类有多种
 ```c++
 /*!
  * ....描述...
-*/
+ */
 或者
 /*!
   ....描述...
-*/
+ */
 ```
 
 3.
@@ -1379,16 +1379,16 @@ Doxygen注释的种类有多种
 
 ```c
 /**
-* @file       filename
-* @brief      This is a brief description.
-* @details    This is the detail description.
-* @author     Felix Lu/000011
-* @date       2019-02-14
-* @version    V00A00D00
-* @par Copyright (c) 2019~2100, 西安图为电气技术有限公司. All rights reserved.
-* @par History:
-*             version: author, date, desc
-*/
+ * @file       filename
+ * @brief      This is a brief description.
+ * @details    This is the detail description.
+ * @author     Felix Lu/000011
+ * @date       2019-02-14
+ * @version    V00A00D00
+ * @par Copyright (c) 2019~2100, 西安图为电气技术有限公司. All rights reserved.
+ * @par History:
+ *             version: author, date, desc
+ */
 ```
 
 ### 函数注释 ###
